@@ -58,6 +58,10 @@ export default defineComponent ({
 </script>
 
 <style scoped>
+body.scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
+}
 #container {
   text-align: center;
   

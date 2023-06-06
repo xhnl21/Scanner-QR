@@ -25,3 +25,20 @@ npm run build
 npx cap sync
 npx cap open android
 luego que abra android estudio esperar que instale las dependencias, buscar la opcion Build, luego Build blunde apk y build apk
+
+Documentacion
+https://github.com/capacitor-community/barcode-scanner
+
+otras documentacion
+https://stackoverflow.com/questions/67770356/ionic-vue-framework-capacitor-qrcode-scanner-issue
+
+https://forum.ionicframework.com/t/qr-code-scanner-for-vue/217599/2
+
+https://github.com/tony-xlh/capacitor-plugin-dynamsoft-barcode-reader/tree/main
+
+https://www.dynamsoft.com/codepool/ionic-vue-qr-code-scanner.html
+
+https://ionicframework.com/docs/v5/native/barcode-scanner
+
+https://github.com/aaronksaunders/capacitor-vue-ionicv4-app/tree/master
+
