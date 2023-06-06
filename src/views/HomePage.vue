@@ -24,7 +24,13 @@
 
 <script>
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent ({
+  data(){ 
+    return  {
+      text:"",
+    }
+  },
   setup() {
     const startScan = async () => {
       console.log("demo");
@@ -37,18 +43,18 @@ export default {
       BarcodeScanner.hideBackground();
 
       const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
-
+      console.log(result);
       // if the result has content
       if (result.hasContent) {
-        alert(result.content);
         console.log(result.content); // log the raw scanned content
+        this.text = result.content
       }
     }
     return {     
       startScan,
     }
   }
-};
+});
 </script>
 
 <style scoped>
