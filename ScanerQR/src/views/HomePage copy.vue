@@ -22,9 +22,11 @@
   </ion-page>
 </template>
 
-<script>
+<script >
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
+// export default {
   setup() {
     const startScan = async () => {
       console.log("demo");
@@ -40,7 +42,7 @@ export default {
 
       // if the result has content
       if (result.hasContent) {
-        alert(result.content);
+        // alert(result.content);
         console.log(result.content); // log the raw scanned content
       }
     }
@@ -48,7 +50,7 @@ export default {
       startScan,
     }
   }
-};
+});
 </script>
 
 <style scoped>
