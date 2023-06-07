@@ -1,0 +1,7 @@
+{
+  "name": "ScannerQR-V5",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
