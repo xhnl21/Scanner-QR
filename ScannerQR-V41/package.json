@@ -1,0 +1,65 @@
+{
+  "name": "my-vue-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "ionic:build": "vue-cli-service build",
+    "ionic:serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@capacitor/android": "^2.5.0",
+    "@capacitor/cli": "^5.0.4",
+    "@capacitor/core": "2.0.2",
+    "@capacitor/ios": "2.0.2",
+    "@ionic-native/call-number": "^5.27.0",
+    "@ionic-native/core": "^5.27.0",
+    "@ionic/core": "5.0.7",
+    "@ionic/pwa-elements": "1.5.2",
+    "@ionic/vue": "0.0.9",
+    "call-number": "^1.0.1",
+    "core-js": "3.6.5",
+    "moment": "^2.29.4",
+    "phonegap-plugin-barcodescanner": "^8.1.0",
+    "vee-validate": "3.3.0",
+    "vue": "2.6.11",
+    "vue-router": "3.1.6",
+    "vuex": "3.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "babel-eslint": "10.1.0",
+    "eslint": "6.8.0",
+    "eslint-plugin-vue": "6.2.2",
+    "ionicons": "5.0.1",
+    "vue-template-compiler": "2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
