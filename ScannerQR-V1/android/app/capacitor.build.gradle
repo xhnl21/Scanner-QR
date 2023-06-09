@@ -10,10 +10,6 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-community-barcode-scanner')
-<<<<<<<< HEAD:ScanerQR/android/app/capacitor.build.gradle
-    implementation project(':capacitor-mlkit-barcode-scanning')
-========
->>>>>>>> 5f6718b0175cf4e123280246577f56a29bac40bd:ScannerQR-V1/android/app/capacitor.build.gradle
     implementation project(':capacitor-app')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
