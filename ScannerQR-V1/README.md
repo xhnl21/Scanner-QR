@@ -42,3 +42,4 @@ https://ionicframework.com/docs/v5/native/barcode-scanner
 
 https://github.com/aaronksaunders/capacitor-vue-ionicv4-app/tree/master
 
+https://github.com/capawesome-team/capacitor-mlkit/tree/main/packages/barcode-scanning

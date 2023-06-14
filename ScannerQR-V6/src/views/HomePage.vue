@@ -1,22 +1,22 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
       <div id="container">
         <ion-button @click="startScan">
           Scanner Qr
         </ion-button>   
+
+        <ion-button @click="scanSingleBarcode">
+          scanSingleBarcode Scanner Qr 
+        </ion-button>  
+        
+        <ion-button @click="scanSingleBarcode">
+          isSupported Scanner Qr 
+        </ion-button>  
+                
+        <ion-button @click="checkPermissions">
+          checkPermissions Scanner Qr 
+        </ion-button>  
       </div>
     </ion-content>
   </ion-page>
@@ -28,6 +28,18 @@ import {
   BarcodeFormat,
   LensFacing,
 } from '@capacitor-mlkit/barcode-scanning';
+
+const checkPermissions = async () => {
+  const { camera } = await BarcodeScanner.checkPermissions();
+  console.log(camera);    
+  return camera;
+};
+
+const isSupported = async () => {
+  const { supported } = await BarcodeScanner.isSupported();
+  console.log(supported);  
+  return supported;
+};
 
 const startScan = async () => {
   // The camera is visible behind the WebView, so that you can customize the UI in the WebView.
