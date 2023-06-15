@@ -23,6 +23,7 @@
 </template>
 
 <script setup lang="ts">
+import { loadingController, alertController } from '@ionic/vue';
 import {
   BarcodeScanner,
   BarcodeFormat,
@@ -32,12 +33,14 @@ import {
 const checkPermissions = async () => {
   const { camera } = await BarcodeScanner.checkPermissions();
   console.log(camera);    
+  showLoading(camera, true);
   return camera;
 };
 
 const isSupported = async () => {
   const { supported } = await BarcodeScanner.isSupported();
   console.log(supported);  
+  showLoading(supported, true);
   return supported;
 };
 
@@ -48,11 +51,18 @@ const startScan = async () => {
   // In this case we set a class `barcode-scanner-active`, which then contains certain CSS rules for our app.
   document.querySelector('body')?.classList.add('barcode-scanner-active');
 
+  const bodies = document.querySelectorAll('body');
+  bodies.forEach(body => {
+    body.classList.add('barcode-scanner-active');
+  });
+  
+
   // Add the `barcodeScanned` listener
   const listener = await BarcodeScanner.addListener(
     'barcodeScanned',
     async result => {
       console.log(result.barcode);
+      showLoading(result.barcode, true);
     },
   );
 
@@ -86,11 +96,29 @@ const scanSingleBarcode = async () => {
         resolve(result.barcode);
       },
     );
-
+    console.log(listener);
+    
     await BarcodeScanner.startScan();
   });
 };
 
+const showLoading = async (msj : any, type : any) => {
+          if (type === false) {
+            const loading = await loadingController.create({
+                message: msj,
+                duration: 1000
+            });
+            loading.present();
+            return 0;
+          }
+          const alert = await alertController.create({
+              // header: 'Error',
+              // subHeader: 'Important message',
+              message: msj,
+              buttons: ['OK'],
+          });
+          await alert.present();
+    }
 </script>
 
 <style scoped>
@@ -99,6 +127,19 @@ body.barcode-scanner-active {
   --background: transparent;
   --ion-background-color: transparent;
 }
+
+.ios body.barcode-scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+.md body.barcode-scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
 
 .barcode-scanner-modal {
   visibility: visible;

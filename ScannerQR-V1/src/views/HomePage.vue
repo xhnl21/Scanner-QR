@@ -35,6 +35,10 @@ export default defineComponent ({
   },
   methods: {
         async startScan () {
+          const bodies = document.querySelectorAll('body');
+          bodies.forEach(body => {
+            body.classList.add('barcode-scanner-active');
+          });
           document.querySelector('body').classList.add('scanner-active');
           document.getElementById('app').style.display = 'none';
           
@@ -107,12 +111,25 @@ export default defineComponent ({
 
 <style scoped>
 body.scanner-active {
+  visibility: hidden;
   --background: transparent;
   --ion-background-color: transparent;
 }
+
+.ios body.scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+.md body.scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
 #container {
   text-align: center;
-  
   position: absolute;
   left: 0;
   right: 0;
