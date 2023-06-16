@@ -36,16 +36,62 @@ export default defineComponent ({
   methods: {
         async startScan () {
           const bodies = document.querySelectorAll('body');
+          console.log(bodies);
           bodies.forEach(body => {
             body.classList.add('barcode-scanner-active');
           });
           document.querySelector('body').classList.add('scanner-active');
           document.getElementById('app').style.display = 'none';
+
+          const permission = await BarcodeScanner.checkPermission();
+          if (permission.neverAsked) {
+            // Permission has not been requested before
+          
+            BarcodeScanner.hideBackground();
+
+            const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+            
+            // if the result has content
+            if (result.hasContent) {
+              this.showLoading(result.content+2, true);
+              console.log(result); // log the raw scanned content
+              this.text = result.content
+              document.getElementById('app').style.display = 'block';
+            }
+
+          } else if (permission.granted) {
+            BarcodeScanner.hideBackground();
+
+            const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+            
+            // if the result has content
+            if (result.hasContent) {
+              this.showLoading(result.content+2, true);
+              console.log(result); // log the raw scanned content
+              this.text = result.content
+              document.getElementById('app').style.display = 'block';
+            }
+
+          } else {
+            // Permission denied, handle appropriately
+            // ...
+            this.showLoading("Permission denied, handle appropriately", true);
+          }
+        },
+        async startScanB () {
+          // const bodies = document.querySelectorAll('body');
+          // console.log(bodies);
+          // bodies.forEach(body => {
+          //   body.classList.add('barcode-scanner-active');
+          // });
+          // document.querySelector('body').classList.add('scanner-active');
+          // document.getElementById('app').style.display = 'none';
           
           // this.showLoading("init 0", true);
           // Check camera permission
           // This is just a simple example, check out the better checks below
           const status = await BarcodeScanner.checkPermission({ force: true });
+          console.log(status);
           if (status.granted) {
 
             // make background of WebView transparent
